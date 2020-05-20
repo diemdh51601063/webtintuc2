@@ -65,13 +65,15 @@
 
               <div style=" padding-left: 120px; " id="imagePreview" ><img  width="300px;"  src="upload\tintuc\{{$tin->hinhdaidien}}">
               </div>
-         
+           
             <label class="control-label">Nhóm tin:</label>
                 <div class="controls">
                 <select name="nhomtin" id="nhomtin" class="span8">
-                  
+             
                   @foreach($dsnhomtin as $nt)
-       <option  @if($nt->id==$idnhomtin) selected  @endif value="{{$nt->id}}"   >{{$nt->tennhomtin}}</option>
+    <option  @if($nt->id==$tin->loaitin->id_nhomtin) 
+      selected  
+      @endif value="{{$nt->id}}"   >{{$nt->tennhomtin}}</option>
 
                   @endforeach
 

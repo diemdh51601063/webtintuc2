@@ -6,6 +6,17 @@
    <section class="blog_area single-post-area section-padding">
       <div class="container">
          <div class="row">
+
+
+
+
+          @if(session('thongbao')) 
+     <script type="text/javascript">
+  
+window.alert('Thêm thành công.')
+
+</script>             
+          @endif
             <div class="col-lg-12 posts-list">
                <div class="single-post">
                   <div class="feature-img">
@@ -24,37 +35,44 @@
                </div>
         
                <div class="comments-area">
-                  <h4>1 Comments</h4>
-                
                   
-                  <div class="comment-list">
+               
+                  
+
+               
+         <?php foreach ($dsbinhluan as $key => $value):
+            if($value->trangthai!=1) continue;
+          ?>             <div class="comment-list">
                      <div class="single-comment justify-content-between d-flex">
-                        <div class="user justify-content-between d-flex">
+                     <div class="user justify-content-between d-flex">
                          
                            <div class="desc">
                               <p class="comment">
-                                 Multiply sea night grass fourth day sea lesser rule open subdue female fill which them
-                                 Blessed, give fill lesser bearing multiply sea night grass fourth day sea lesser
+                                {{$value->noidung}}
                               </p>
                               <div class="d-flex justify-content-between">
                                  <div class="d-flex align-items-center">
                                     <h5>
-                                       <a href="#">Emilly Blunt</a>
+                                       <a href="#"> {{$value->ten}}</a>
                                     </h5>
-                                    <p class="date">December 4, 2017 at 3:12 pm </p>
+                                    <p class="date"> {{$value->thoigian}}</p>
                                  </div>
                                  <div class="reply-btn">
-                                    <a href="#" class="btn-reply text-uppercase">reply</a>
+                                  <!--  <a href="#" class="btn-reply text-uppercase">reply</a>-->
                                  </div>
                               </div>
                            </div>
+ 
+                  
+
                         </div>
                      </div>
-                  </div>
+                  </div><?php endforeach ?>
                </div>
                <div class="comment-form">
                   <h4>Leave a Reply</h4>
-                  <form class="form-contact comment_form" action="#" id="commentForm">
+                  <form class="form-contact comment_form" action="binhluan-{{$tin->id}}" id="commentForm" method="POST">
+                       <input type="hidden" name="_token" value="{{csrf_token()}}"/>
                      <div class="row">
                         <div class="col-12">
                            <div class="form-group">
@@ -87,7 +105,7 @@
    <!--================ Blog Area end =================-->
                        @endsection
 
-                       @section('content2')
+@section('content2')
 <div class="card mb-3" style="max-width: 720px; border-bottom: 0px;border-right: 0px; border-left: 0px;">
   <div class="row no-gutters">
     <div class="col-md-4">
@@ -103,4 +121,10 @@
     </div>
   </div>
 </div>
+@endsection
+
+@section('script')
+
+
+
 @endsection

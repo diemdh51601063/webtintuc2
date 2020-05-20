@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\loaitin;
 use App\nhomtin;
+use App\binhluan;
 use Illuminate\Support\Str;
 
 class loaitinController extends Controller
@@ -22,7 +23,7 @@ class loaitinController extends Controller
     public function postthem(Request $request){
        $this->validate($request,
             [
-                'ten'=>'required|min:1|max:255|unique:loaitin,tenloaitin|regex:/[a-zA-Z]+/',
+                'ten'=>'required|min:1|max:255|unique:loaitin,tenloaitin|regex:/[a-zA-Z]+/',s
                
             ],
             [   
@@ -38,7 +39,7 @@ class loaitinController extends Controller
   	
         $loaitin=new  loaitin;
         $loaitin->id=$request->id;
-         $loaitin->loaitinseo=Str::slug($request->ten,'-');
+        $loaitin->loaitinseo=Str::slug($request->ten,'-');
         $loaitin->tenloaitin=$request->ten;
 
         $loaitin->id_nhomtin=$request->nhomtin;
