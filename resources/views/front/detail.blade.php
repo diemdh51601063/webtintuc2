@@ -106,6 +106,8 @@ window.alert('Thêm thành công.')
                        @endsection
 
 @section('content2')
+
+
 <div class="card mb-3" style="max-width: 720px; border-bottom: 0px;border-right: 0px; border-left: 0px;">
   <div class="row no-gutters">
     <div class="col-md-4">
@@ -115,16 +117,43 @@ window.alert('Thêm thành công.')
       <div class="card-body">
         <h5 class="card-title">Card title</h5>
         <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-        <p class="card-text">28-04-2020 06:25:29</p>
+      
+        <p >28-049</p>
       </div>
     </div>
   </div>
 </div>
+
+<div id="content5">
+  
+</div>
+
+
+
 @endsection
 
 @section('script')
 
+<script type="text/javascript">
 
+ $(window).scroll(function() {
+
+ 
+    if($(window).scrollTop()  >= ($(document).height() - $(window).height())*0.9) {
+       /*   var list = $('p').toArray();
+       var x =(list[list.length-1].innerHTML);
+
+       window.consolog(x);*/
+          $.get("tin/"+ <?php echo $tin->id_loaitin; ?>, function(data){
+
+
+    $('#content5').append(data);
+     
+
+  });
+    }
+});
+</script>
+  <script language="JavaScript" type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"> </script>
 
 @endsection

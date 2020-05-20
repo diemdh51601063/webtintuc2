@@ -22,7 +22,7 @@
             <link rel="stylesheet" href="assets/css/slick.css">
             <link rel="stylesheet" href="assets/css/nice-select.css">
             <link rel="stylesheet" href="assets/css/style.css">
-            @yield('script')
+           
    </head>
 
    <body>
@@ -331,7 +331,8 @@
    </footer>
    
     <!-- JS here -->
-    
+    @yield('script')
+
         <!-- All JS Custom Plugins Link Here here -->
         <script src="./assets/js/vendor/modernizr-3.5.0.min.js"></script>
         <!-- Jquery, Popper, Bootstrap -->
@@ -370,6 +371,6 @@
         <!-- Jquery Plugins, main Jquery -->    
         <script src="./assets/js/plugins.js"></script>
         <script src="./assets/js/main.js"></script>
-        
+         @yield('script')
     </body>
 </html>

@@ -90,7 +90,15 @@ Route::get('trangchu.html','UserController@gettrangchu');
   Route::get('{search}.html','frontController@getcategory');
 
   Route::post('binhluan-{value}','frontController@postdetail');
-   
+
+
+  Route::get('',function(){
+    return view('detail');
+  });
+
+  Route::get('/tin/{value}','frontController@gettin');
+
+  
   Route::fallback(function () {
    return redirect()->route('index');
 });
