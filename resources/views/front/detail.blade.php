@@ -108,21 +108,7 @@ window.alert('Thêm thành công.')
 @section('content2')
 
 
-<div class="card mb-3" style="max-width: 720px; border-bottom: 0px;border-right: 0px; border-left: 0px;">
-  <div class="row no-gutters">
-    <div class="col-md-4">
-      <img src="assets/img/news/whatNews1.jpg" class="card-img" alt="...">
-    </div>
-    <div class="col-md-8">
-      <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-      
-        <p >28-049</p>
-      </div>
-    </div>
-  </div>
-</div>
+
 
 <div id="content5">
   
@@ -135,20 +121,34 @@ window.alert('Thêm thành công.')
 @section('script')
 
 <script type="text/javascript">
+localStorage.setItem('luu',<?php echo $tin->id; ?>);
 
  $(window).scroll(function() {
 
  
-    if($(window).scrollTop()  >= ($(document).height() - $(window).height())*0.9) {
-       /*   var list = $('p').toArray();
+    if($(window).scrollTop()  >= ($(document).height() - $(window).height())*0.95-300) {
+      /*    var list = $('p').toArray();
        var x =(list[list.length-1].innerHTML);
 
        window.consolog(x);*/
-          $.get("tin/"+ <?php echo $tin->id_loaitin; ?>, function(data){
+          $.get("tin/"+ localStorage.getItem("luu"), function(data){
+    var json=JSON.parse(data);
+//console.log(json);
+if(json.id!=localStorage.getItem("luu"))
+
+  {
+    localStorage.setItem('luu',json.id);
+//window.alert(json.id);
+  //  $('#content5').append(data);
+   // localStorage.setItem()
+  
+
+      t='<div class="card mb-3" style="max-width: 720px; border-bottom: 0px;border-right: 0px; border-left: 0px;">  <div class="row no-gutters">    <div class="col-md-4">      <img src="upload/tintuc/'+json.hinhdaidien+'" class="card-img" alt="">    </div>    <div class="col-md-8">      <div class="card-body">        <h5 class="card-title"><a href="'+json.tieudeseo+'-post'+json.id+'.html"> '+json.tieude+'</a></h5>        <p class="card-text"></p>              <p >'+json.ngaydangtin+'</p>      </div>    </div>  </div></div>'
 
 
-    $('#content5').append(data);
-     
+$('#content5').append(t);}
+
+
 
   });
     }

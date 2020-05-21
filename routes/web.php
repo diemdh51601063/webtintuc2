@@ -92,9 +92,7 @@ Route::get('trangchu.html','UserController@gettrangchu');
   Route::post('binhluan-{value}','frontController@postdetail');
 
 
-  Route::get('',function(){
-    return view('detail');
-  });
+ 
 
   Route::get('/tin/{value}','frontController@gettin');
 
