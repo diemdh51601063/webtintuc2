@@ -42,7 +42,7 @@
                 <tr class="gradeX">
 
                   <td>{{$nt->id}}</td>
-                  <td><a href="{{route('danhsachnhomtin',['id_nhomtin'=>$nt->id])}}">{{$nt->tennhomtin}}</a></td>
+                  <td>{{$nt->tennhomtin}}</td>
                   <td>
               
 

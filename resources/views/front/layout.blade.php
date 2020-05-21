@@ -134,6 +134,20 @@
                                                     <li><a href="su-kien.html">Sự kiện</a></li>
                                                 </ul>
                                             </li>
+
+                                            
+
+                                            <li><a href="cong-nghe.html">Công Nghệ</a>
+                                                <ul class="submenu">
+                                                    <li><a href="mobile.html">Mobile</a></li>
+                                                    <li><a href="xe.html">Xe</a></li>
+                                                    <li><a href="internet.html">Internet</a></li>
+                                                </ul>
+                                            </li>
+
+                                            
+
+                                            
                                             
                                         </ul>
                                     </nav>
@@ -176,7 +190,11 @@
             <div class="col-lg-4">
                 <!-- Section Tittle -->
                 <div class="section-tittle mb-40">
-                    <h3>Follow Us</h3>
+                    <h3>COVID-19</h3>
+                    <p id='canhiem'>Ca nhiễm</p>
+                    <p id='tuvong'>Ca tử vong</p>
+                    <p id='phuchoi'>Ca phục hồi</p>
+
                 </div>
                 <!-- Flow Socail -->
                 <div class="single-follow mb-45">
@@ -331,8 +349,8 @@
    </footer>
    
     <!-- JS here -->
-    @yield('script')
-
+        
+        
         <!-- All JS Custom Plugins Link Here here -->
         <script src="./assets/js/vendor/modernizr-3.5.0.min.js"></script>
         <!-- Jquery, Popper, Bootstrap -->
@@ -372,5 +390,22 @@
         <script src="./assets/js/plugins.js"></script>
         <script src="./assets/js/main.js"></script>
          @yield('script')
+            <script>
+        $(document).ready(function () {
+            $.ajax({
+                type: 'GET',
+                url: 'https://api.thevirustracker.com/free-api?global=stats',
+                success: function (data) {
+
+                    $('#canhiem').html('Ca nhiễm :'+data.results[0].total_cases);
+                    $('#tuvong').html('Ca tử vong :'+data.results[0].total_recovered);
+                    $('#phuchoi').html('Ca phục hồi :'+data.results[0].total_unresolved);
+
+                  // window.alert(data.results[0].total_cases);
+                }
+            });
+            return false;
+        });
+    </script>
     </body>
 </html>
