@@ -88,7 +88,7 @@
                             <div class="col-xl-10 col-lg-10 col-md-12 header-flex">
                                 <!-- sticky -->
                                     <div class="sticky-logo">
-                                        <a href="index.html"><img src="assets/img/logo/logo.png" alt=""></a>
+                                        <a href="index.html"><img style="max-width: 120px; max-height: 30px;" src="assets/img/logo/logo.png" alt=""></a>
                                     </div>
                                 <!-- Main-menu -->
                                 <div class="main-menu d-none d-md-block">
@@ -399,8 +399,8 @@
                 success: function (data) {
 
                     $('#canhiem').html('Ca nhiễm :'+data.results[0].total_cases);
-                    $('#tuvong').html('Ca tử vong :'+data.results[0].total_recovered);
-                    $('#phuchoi').html('Ca phục hồi :'+data.results[0].total_unresolved);
+                    $('#tuvong').html('Ca tử vong :'+data.results[0].total_deaths);
+                    $('#phuchoi').html('Ca phục hồi :'+data.results[0].total_recovered);
 
                   // window.alert(data.results[0].total_cases);
                 }
