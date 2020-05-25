@@ -86,7 +86,9 @@ Route::get('trangchu.html','UserController@gettrangchu');
   Route::get('index.html','frontController@getfront');
 
   Route::get('{seo}post{search}.html','frontController@getdetail');
-  Route::get('{search}-tim-kiem.html','frontController@getsearch');
+  Route::post('tim-kiem.html','frontController@postsearch');
+  Route::get('{search}tim-kiem.html','frontController@getsearch');
+  
   Route::get('{search}.html','frontController@getcategory');
 
   Route::post('binhluan-{value}','frontController@postdetail');

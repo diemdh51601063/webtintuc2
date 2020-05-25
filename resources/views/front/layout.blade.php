@@ -7,7 +7,7 @@
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="manifest" href="site.webmanifest">
-        <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.ico">`
+        <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.ico">
 
         <!-- CSS here -->
             <link rel="stylesheet" href="assets/css/bootstrap.min.css">
@@ -157,8 +157,9 @@
                                 <div class="header-right-btn f-right d-none d-lg-block">
                                     <i class="fas fa-search special-tag"></i>
                                     <div class="search-box">
-                                        <form action="#">
-                                            <input type="text" placeholder="Search">
+                                        <form action="tim-kiem.html" method="post">
+                                            <input name="search" type="text" placeholder="Search">  
+                                               <input type="hidden" name="_token" value="{{csrf_token()}}"/>
                                             
                                         </form>
                                     </div>

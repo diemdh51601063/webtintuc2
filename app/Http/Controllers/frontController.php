@@ -106,11 +106,27 @@ class frontController extends Controller
 
     public function getsearch($search)
     {
+            $x=str_replace("-"," ",$search);
+            
+          
+
+            $dstin=tin::orWhere('tieudeseo','like','%'.$search.'%')->orWhere('tieude','like','%'.$x.'%')->orWhere('noidung','like','%'.$x.'%')->orderBy('id', 'DESC')->get();
+          
+             $soluong= count($dstin);
+    	return view('front/search',['dstin'=>$dstin,'soluong'=>$soluong]);
 
 
 
+    }
+    public function postsearch(Request $request)
+    {
 
-    	return view('front/search');
+       
+         $x= $request->search;
+
+
+         $x=str_replace(" ","-",$x);
+        return redirect($x.'-tim-kiem.html');
 
 
 
