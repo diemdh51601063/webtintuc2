@@ -16,7 +16,7 @@
 <div class="card mb-3" style="max-width: 720px; border-bottom: 0px;border-right: 0px; border-left: 0px;">
   <div class="row no-gutters">
     <div class="col-md-4">
-      <img src="upload/tintuc/{{$value->hinhdaidien}}" class="card-img" alt="$value->mota">
+      <img style="max-width: 240px;max-height: 223px;" src="upload/tintuc/{{$value->hinhdaidien}}" class="card-img" alt="$value->mota">
     </div>
     <div class="col-md-8">
       <div class="card-body">

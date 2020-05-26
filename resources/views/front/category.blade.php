@@ -18,7 +18,7 @@
 <div class="card mb-3" style="max-width: 720px; border-bottom: 0px;border-right: 0px; border-left: 0px;">
   <div class="row no-gutters">
     <div class="col-md-4">
-     <a href="{{$value->tieudeseo}}-post{{$value->id}}.html"> <img src="upload/tintuc/{{$value->hinhdaidien}}" class="card-img" alt="{{$value->mota}}"></a>
+     <a href="{{$value->tieudeseo}}-post{{$value->id}}.html"> <img  style="width: 240px;height: 223px;" src="upload/tintuc/{{$value->hinhdaidien}}" class="card-img" alt="{{$value->mota}}"></a>
     </div>
     <div class="col-md-8">
       <div class="card-body">

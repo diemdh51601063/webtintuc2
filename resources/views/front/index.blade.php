@@ -114,7 +114,7 @@
                 <div class="row d-flex justify-content-between">
                     <div class="col-lg-3 col-md-3">
                         <div class="section-tittle mb-30">
-                            <h3>Whats New</h3>
+                            <h3>Tin Mới</h3>
                         </div>
                     </div>
                     
@@ -134,13 +134,13 @@
             <div class="card mb-3" style="max-width: 720px; border-bottom: 0px;border-right: 0px; border-left: 0px;">
   <div class="row no-gutters">
     <div class="col-md-4">
-      <img style="width: 240px;height: 223px;" class="card-img" src="upload\tintuc\{{$val->hinhdaidien}}" alt="{{$val->mota}}">
+      <img style="max-width: 240px;max-height: 223px;" class="card-img" src="upload\tintuc\{{$val->hinhdaidien}}" alt="{{$val->mota}}">
     </div>
     <div class="col-md-8">
       <div class="card-body">
         <h5 class="card-title"><a href="{{$val->tieudeseo}}-post{{$val->id}}.html">{{$val->tieude}}</a></h5>
-         <span class="color4" ><a style=" color: black;" href="{{$data[$key]->loaitin->loaitinseo}}.html">{{$data[$key]->loaitin->tenloaitin}}</a></span>
-        <p class="card-text">No</p>
+         <span class="" ><a style=" color: black;" href="{{$data[$key]->loaitin->loaitinseo}}.html">{{$data[$key]->loaitin->tenloaitin}}</a></span>
+        <p class="card-text"></p>
        
         <p class="card-text">{{$val->ngaydangtin}}</p>
       </div>

@@ -70,19 +70,19 @@ window.alert('Thêm thành công.')
                   </div><?php endforeach ?>
                </div>
                <div class="comment-form">
-                  <h4>Leave a Reply</h4>
+                  <h4>Bình luận</h4>
                   <form class="form-contact comment_form" action="binhluan-{{$tin->id}}" id="commentForm" method="POST">
                        <input type="hidden" name="_token" value="{{csrf_token()}}"/>
                      <div class="row">
                         <div class="col-12">
                            <div class="form-group">
                               <textarea class="form-control w-100" name="comment" id="comment" cols="30" rows="9"
-                                 placeholder="Write Comment"></textarea>
+                                 placeholder="Viết bình luận"></textarea>
                            </div>
                         </div>
                         <div class="col-sm-6">
                            <div class="form-group">
-                              <input class="form-control" name="name" id="name" type="text" placeholder="Name">
+                              <input class="form-control" name="name" id="name" type="text" placeholder="Họ tên">
                            </div>
                         </div>
                         <div class="col-sm-6">
@@ -93,7 +93,7 @@ window.alert('Thêm thành công.')
                       
                      </div>
                      <div class="form-group">
-                        <button type="submit" class="button button-contactForm btn_1 boxed-btn">Send Message</button>
+                        <button type="submit" class="button button-contactForm btn_1 boxed-btn">Gửi</button>
                      </div>
                   </form>
                </div>
@@ -134,7 +134,7 @@ localStorage.setItem('luu',<?php echo $tin->id; ?>);
           $.get("tin/"+ localStorage.getItem("luu"), function(data){
     var json=JSON.parse(data);
 //console.log(json);
-if(json.id!=localStorage.getItem("luu"))
+if(json.id>localStorage.getItem("luu"))
 
   {
     localStorage.setItem('luu',json.id);
