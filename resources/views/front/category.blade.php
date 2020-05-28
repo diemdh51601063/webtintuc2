@@ -24,6 +24,10 @@
       <div class="card-body">
         <h5 class="card-title"><a href="{{$value->tieudeseo}}-post{{$value->id}}.html">{{$value->tieude}}</a></h5>
         <p class="card-text"><a style="color: black;" href="{{$value->loaitin->loaitinseo}}.html">{{$value->loaitin->tenloaitin}}</a></p>
+        <p class="card-text"><?php 
+        if(strlen($value->noidung)>120)
+        echo substr($value->noidung,0,strpos($value->noidung,' ',120)); ?>...</p>
+        <br>
         <p class="card-text"><small class="text-muted">{{$value->ngaydangtin}}</small></p>
       <!--  <p class="card-text">28-04-2020 06:25:29</p>-->
       </div>

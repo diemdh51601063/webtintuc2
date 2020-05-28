@@ -106,16 +106,27 @@ class frontController extends Controller
 
     public function getsearch($search)
     {
-            $x=str_replace("-"," ",$search);
-            
+     /*   $search=substr($search,0,strlen($search)-1);
+        $mangtimkiem=array();
+            $x=str_replace("-"," ",$search); 
+            array_push($mangtimkiem,$search,$x);
+            $y1=explode(' ',$x);
+            foreach ($y1 as $key => $value) {
+               array_push($mangtimkiem,$value);
+            }
+            $y2=explode('-',$search);
+             foreach ($y2 as $key => $value) {
+               array_push($mangtimkiem,$value);
+            }
           
-
+*/          $search=substr($search,0,strlen($search)-1);
+            $x=str_replace("-"," ",$search); 
             $dstin=tin::orWhere('tieudeseo','like','%'.$search.'%')->orWhere('tieude','like','%'.$x.'%')->orWhere('noidung','like','%'.$x.'%')->orderBy('id', 'DESC')->get();
           
              $soluong= count($dstin);
     	return view('front/search',['dstin'=>$dstin,'soluong'=>$soluong]);
 
-
+//var_dump($mangtimkiem);
 
     }
     public function postsearch(Request $request)

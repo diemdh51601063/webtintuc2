@@ -21,7 +21,7 @@
     <div class="col-md-8">
       <div class="card-body">
         <h5 class="card-title"><a href="{{$value->tieudeseo}}-post{{$value->id}}.html">{{$value->tieude}}</a></h5>
-        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+        <p class="card-text"><?php echo substr($value->noidung,0,strpos($value->noidung,'.')); ?>.</p>
        
         <p class="card-text">{{$value->ngaydangtin}}</p>
       </div>

@@ -140,7 +140,9 @@
       <div class="card-body">
         <h5 class="card-title"><a href="{{$val->tieudeseo}}-post{{$val->id}}.html">{{$val->tieude}}</a></h5>
          <span class="" ><a style=" color: black;" href="{{$data[$key]->loaitin->loaitinseo}}.html">{{$data[$key]->loaitin->tenloaitin}}</a></span>
-        <p class="card-text"></p>
+       <p class="card-text"><?php 
+        if(strlen($val->noidung)>150)
+        echo substr($val->noidung,0,strpos($val->noidung,' ',150)); ?>...</p>
        
         <p class="card-text">{{$val->ngaydangtin}}</p>
       </div>
