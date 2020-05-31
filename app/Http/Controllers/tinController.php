@@ -10,71 +10,71 @@ use Illuminate\Support\Str;
 class tinController extends Controller
 {
     public function getdanhsach(){
-    		$tin=tin::all();
-    	return view('admin.tin.danhsach',['tin'=>$tin]);
+            $tin=tin::all();
+        return view('admin.tin.danhsach',['tin'=>$tin]);
     }
      public function getthem(){
-	
-     	$nhomtin=nhomtin::all();  $loaitin=loaitin::where('id_nhomtin',$nhomtin[0]->id)->get();
-    	return view('admin.tin.them',['loaitin'=>$loaitin,'nhomtin'=>$nhomtin]);
+    
+        $nhomtin=nhomtin::all();  $loaitin=loaitin::where('id_nhomtin',$nhomtin[0]->id)->get();
+        return view('admin.tin.them',['loaitin'=>$loaitin,'nhomtin'=>$nhomtin]);
     }
 
     public function postThem(Request $request)
     {
-    	
-    	$this->validate($request,[
-    		'tieude'=>'required|min:1|max:255|unique:tin,tieude|regex:/[a-zA-Z]+/',
-    		'loaitin'=>'required',
-    		'tacgia'=>'required|min:1|max:255|regex:/[a-zA-Z]+/',
-    		'mota'=>'required|regex:/[a-zA-Z]+/',
-    		
-    		'noidung'=>'required|regex:/[a-zA-Z0-9]+/',
+        
+        $this->validate($request,[
+            'tieude'=>'required|min:1|max:255|unique:tin,tieude|regex:/[a-zA-Z]+/',
+            'loaitin'=>'required',
+            'tacgia'=>'required|min:1|max:255|regex:/[a-zA-Z]+/',
+            'mota'=>'required|regex:/[a-zA-Z]+/',
+            
+            'noidung'=>'required|regex:/[a-zA-Z0-9]+/',
             'file'=>'required',
-    	],[
-    		'tieude.min'=>'Tiêu đề có độ dài từ 1 - 255 ký tự.',
+        ],[
+            'tieude.min'=>'Tiêu đề có độ dài từ 1 - 255 ký tự.',
             'tieude.max'=>'Tiêu đề có độ dài từ 1 - 255 ký tự.',
-    		'tieude.required'=>'Tiêu đề chưa nhập.',
-    		'tieude.unique'=>'Đã tồn tại.',
+            'tieude.required'=>'Tiêu đề chưa nhập.',
+            'tieude.unique'=>'Đã tồn tại.',
             'tieude.regex'=>'Phải có ký tự a-zA-Z.',
 
-    		'loaitin.required'=>'Chưa chọn loại tin.',
+            'loaitin.required'=>'Chưa chọn loại tin.',
 
-    		'tacgia.min'=>'Tên tác có độ dài từ 1 - 255 ký tự.',
+            'tacgia.min'=>'Tên tác có độ dài từ 1 - 255 ký tự.',
             'tacgia.max'=>'Tên tác có độ dài từ 1 - 255 ký tự.',
             'tacgia.regex'=>'Phải có ký tự a-zA-Z.',
             'tacgia.required'=>'Tên tác có độ dài từ 1 - 255 ký tự.',
-    	    'mota.required'=>'Mô tả không được để trống.',
-        	'noidung.required'=>'Nội dung không được để trống.',
+            'mota.required'=>'Mô tả không được để trống.',
+            'noidung.required'=>'Nội dung không được để trống.',
             'noidung.regex'=>'Phải có ký tự a-zA-Z0-9.',
 
 
-    	]);
+        ]);
 
-    	$tin=new tin;
-    	$tin->tieude=$request->tieude;
+        $tin=new tin;
+        $tin->tieude=$request->tieude;
         $tin->tieudeseo=Str::slug($request->tieude,'-');
-    	$tin->id_loaitin=$request->loaitin;
-    	$tin->tacgia=$request->tacgia;
-    	$tin->mota=$request->mota;
+        $tin->id_loaitin=$request->loaitin;
+        $tin->tacgia=$request->tacgia;
+        $tin->mota=$request->mota;
     
-    	$tin->noidung=$request->noidung;
-    	if($request->hasFile('file'))
-    	{
-    			$file=$request->file('file');
-    			$name=$file->getClientOriginalName();
-    			$hinh=str::random(4)."_".$name;
-    			while ( file_exists("upload/tintuc/".$hinh)) {
-    				$hinh=str_random(4)."_".$name;
-    			}
-    			$file->move("upload/tintuc/",$hinh);
-    			$tin->hinhdaidien=$hinh;    			
-    	}
-    	else
-    	{
-    		$tin->hinhdaidien="";
-    	}
-    	$tin->save();
-    	return redirect("admin/tin/them.html")->with('thongbao','Thêm thành công.');
+        $tin->noidung=$request->noidung;
+        if($request->hasFile('file'))
+        {
+                $file=$request->file('file');
+                $name=$file->getClientOriginalName();
+                $hinh=str::random(4)."_".$name;
+                while ( file_exists("upload/tintuc/".$hinh)) {
+                    $hinh=str_random(4)."_".$name;
+                }
+                $file->move("upload/tintuc/",$hinh);
+                $tin->hinhdaidien=$hinh;                
+        }
+        else
+        {
+            $tin->hinhdaidien="";
+        }
+        $tin->save();
+        return redirect("admin/tin/them.html")->with('thongbao','Thêm thành công.');
 
     }
 
@@ -102,16 +102,16 @@ class tinController extends Controller
 
     public function getsua($id_tin){
 
-  	   $tin=tin::find($id_tin);
+       $tin=tin::find($id_tin);
 
         if($tin==null)
           return redirect('admin/tin/danhsach.html')->with('thongbao','Không tồn tại tin.');
-	   $loaitin=loaitin::find($tin->id_loaitin);
+       $loaitin=loaitin::find($tin->id_loaitin);
 
-	   $idloaitin=$loaitin->id_loaitin;
+       $idloaitin=$loaitin->id_loaitin;
        $nhomtin=nhomtin::find($loaitin->id_nhomtin);
        $idnhomtin=$nhomtin->id_nhomtin;
- 	   $dsloaitin=$nhomtin->loaitin;
+       $dsloaitin=$nhomtin->loaitin;
        $dsnhomtin=$nhomtin::all();
 
   return view('admin.tin.sua',['tin'=>$tin,'idloaitin'=>$idloaitin,'idnhomtin'=>$idnhomtin,'dsloaitin'=>$dsloaitin,'dsnhomtin'=>$dsnhomtin]);
