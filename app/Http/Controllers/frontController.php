@@ -46,7 +46,7 @@ class frontController extends Controller
         if($tin->tieudeseo!=$seo)
             return redirect($tin->tieudeseo.'-post'.$search.'.html');
         
-    $dsbinhluan=$tin->binhluan;
+    $dsbinhluan=$tin->binhluan->where('an',0);
 
     
 

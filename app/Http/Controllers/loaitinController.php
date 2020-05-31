@@ -23,7 +23,7 @@ class loaitinController extends Controller
     public function postthem(Request $request){
        $this->validate($request,
             [
-                'ten'=>'required|min:1|max:255|unique:loaitin,tenloaitin|regex:/[a-zA-Z]+/',s
+                'ten'=>'required|min:1|max:255|unique:loaitin,tenloaitin|regex:/[a-zA-Z]+/',
                
             ],
             [   
